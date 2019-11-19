@@ -1,5 +1,7 @@
 #!/bin/bash
-consul_version="1.4.4"
+
+
+consul_version="1.6.1"
 
 # create a tempoary folder for the consul download
 mkdir -p /tmp/consul_update
@@ -31,8 +33,12 @@ systemctl daemon-reload
 
 # start consul again and print startup
 systemctl start consul
-systemctl status consul
+
 
 # print the consul memberlist
-sleep 1
+sleep 3
 /usr/local/bin/consul members
+
+# flag that consul update is already done
+mkdir -p /opt/consul
+touch /opt/consul/consul_update_done
